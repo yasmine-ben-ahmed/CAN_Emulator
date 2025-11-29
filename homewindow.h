@@ -1,6 +1,7 @@
 #ifndef HOMEWINDOW_H
 #define HOMEWINDOW_H
 
+#include "mainwindow.h"
 #include <QMainWindow>
 #include <QSerialPort>
 
@@ -38,6 +39,7 @@ private:
     Ui::HomeWindow *ui;
     bool sidebarVisible;       // Sidebar state
     QSerialPort *serial;       // Serial port object
+    MainWindow* monitorPage = nullptr;
 };
 
 #endif // HOMEWINDOW_H

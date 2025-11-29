@@ -1,4 +1,4 @@
-#include "homewindow.h"
+#include "homewindow.h";
 
 #include <QApplication>
 #include <QFile>

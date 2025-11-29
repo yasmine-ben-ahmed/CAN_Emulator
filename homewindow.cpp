@@ -1,5 +1,6 @@
-#include "homewindow.h"
-#include "./ui_homewindow.h"
+#include "homewindow.h";
+#include "./ui_homewindow.h";
+#include "mainwindow.h";
 
 #include <QPropertyAnimation>
 #include <QSerialPortInfo>
@@ -13,6 +14,7 @@ HomeWindow::HomeWindow(QWidget *parent)
     , serial(new QSerialPort(this))
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 
     resize(1000, 700);
 
@@ -249,8 +251,13 @@ void HomeWindow::showTransmitPage() {
 // ------------------------------
 void HomeWindow::showMonitorPage()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    if (!monitorPage) {
+        monitorPage = new MainWindow(this);
+        ui->stackedWidget->addWidget(monitorPage);
+    }
+    ui->stackedWidget->setCurrentWidget(monitorPage);
 }
+
 
 // ------------------------------
 // Show Dashboard Page
